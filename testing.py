@@ -14,6 +14,8 @@ class TestMethods(unittest.TestCase):
         result = calc.add(10, 5)
         self.assertEqual(result, 15, "If 10 and 5 are added together, the result should be 15")
 
-
+    def test_subtract(self):
+        result = calc.subtract(10, 5)
+        self.assertEqual(result, 5, "10 - 5 should equal 5.")
 
 

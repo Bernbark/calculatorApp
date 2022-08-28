@@ -22,7 +22,7 @@ class CalcUI:
     the buttons, as well as the output.
     """
     def __init__(self, main):
-        buttonFrame = Frame(main)
+        buttonFrame = Frame(main)       # the frame which holds the buttons that the user can interact with
         buttonFrame.pack()
 
 root.mainloop()

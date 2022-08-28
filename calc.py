@@ -13,5 +13,22 @@ functions:
 
 """
 
+
 def add(a, b):
+    """Returns the sum of a and b
+
+    :param a: number to be added to b
+    :param b: number to be added to a
+    :return: the sum of a and b
+    """
     return a + b
+
+
+def subtract(a, b):
+    """Returns the difference between a and b (order matters)
+
+    :param a: number to be subtracted from b
+    :param b: number to be subtracted from a
+    :return: a - b
+    """
+    return a - b
