@@ -1,33 +1,26 @@
-# Product Name
-> Short blurb about what your product does.
+# Calculator App
+> This is designed to act as a simple calculator while also serving as a lesson in good comment practices, and writing tests before the code. 
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+My intention with this project is to build my skillsets in programming. So far I have learned that unit testing is very important, but I have failed to apply test-driven development to my actual programming practices. Oftentimes I want to move quickly in my personal hobby projects because I want to get as much done as possible, but this is bad practice and I hope to eventually be employed as a programmer some day.
+
+The focus of this project (and hopefully all projects moving forward) is to accurately and completely document the project, both through commits to GitHub as well as comments in code, describing functions and classes following specific protocols suggested/defined in Python. The secondary focus is to build testing skills, which often requires understanding how the method should work before writing it out.
 
 ![](header.png)
 
 ## Installation
 
-OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
+This requires TKinter to be installed in the environment running the program.
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+This is used for basic math, and may further be improved to calculate more complex problems.
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
+(There is no wiki, just leaving this for example)
 
 ## Development setup
 
@@ -55,9 +48,9 @@ npm test
 
 ## Meta
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Kory Stennett – [@YourTwitter](https://twitter.com/dbader_org) – korystennett@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+No license required.
 
 [https://github.com/yourname/github-link](https://github.com/dbader/)
 
