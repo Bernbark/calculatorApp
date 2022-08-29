@@ -97,12 +97,21 @@ class CalcUI(LabelFrame):
         equ = Button(self, text="=")
         equ.grid(row=5, column=2)
 
-        pls = Button(self, text="+")
+        pls = Button(self, text="+", command=lambda:self.add_button(self.output.cget('text')))
         pls.grid(row=5, column=3)
 
         self.output.grid(row=0, columnspan=4, sticky=W + E)
 
         self.pack()
+
+    def add_button(self,str):
+        """ Includes functionality for updating display when + is pressed
+
+        """
+        text = str
+        newtext = text + " + "
+        self.output.config(text=newtext)
+        return newtext
 
     def display_number(self,str):
         """ Changes the output display
