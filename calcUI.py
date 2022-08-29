@@ -40,8 +40,8 @@ class CalcUI(LabelFrame):
         self.rowconfigure(3, pad=3)
         self.rowconfigure(4, pad=3)
 
-        cls = Button(self, text="Cls")
-        cls.grid(row=1, column=0)
+        clr = Button(self, text="Clr", command=lambda: self.clear())
+        clr.grid(row=1, column=0)
 
         bck = Button(self, text="Back")
         bck.grid(row=1, column=1)
@@ -112,6 +112,18 @@ class CalcUI(LabelFrame):
         newtext = text + " + "
         self.output.config(text=newtext)
         return newtext
+
+    def equals(self):
+        """ When pressed this should update the display with all of the calculations waiting in output label
+
+        """
+
+    def clear(self):
+        """ When pressed this should update the output with a blank string
+
+         """
+        self.output.config(text='0')
+        return self.output.cget('text')
 
     def display_number(self,str):
         """ Changes the output display

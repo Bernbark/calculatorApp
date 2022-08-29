@@ -46,3 +46,11 @@ class TestUIFunctionality(unittest.TestCase):
         teststr += calcUI.CalcUI().add_button("7")
 
         self.assertEqual(result, teststr)
+
+    def test_clear_button(self):
+        result = "0"                                    # make sure that when we clear, there is a number inside output
+        teststr = calcUI.CalcUI().clear()               # clear() returns the text inside of CalcUI().output
+
+        self.assertEqual(result, teststr)
+
+
