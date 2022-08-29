@@ -61,7 +61,7 @@ class CalcUI(LabelFrame):
         nin = Button(self, text="9")
         nin.grid(row=2, column=2)
 
-        div = Button(self, text="/")
+        div = Button(self, text="/", command=lambda: self.divide(self.output.cget('text')))
         div.grid(row=2, column=3)
 
         fou = Button(self, text="4")
@@ -104,18 +104,32 @@ class CalcUI(LabelFrame):
 
         self.pack()
 
-    def add_button(self,str):
+    def add_button(self,button_text):
         """ Includes functionality for updating display when + is pressed
 
+        :param str: the text displayed on the button this method is attached to
+        :return: string representation of output's text
         """
-        text = str
+        text = button_text
         newtext = text + " + "
         self.output.config(text=newtext)
         return newtext
 
-    def equals(self):
+    def divide(self,button_text):
+        """ Includes functionality for updating display when / is pressed
+
+        :param str: the text displayed on the button this method is attached to
+        :return: string representation of output's text
+        """
+        text = button_text
+        newText = text + " / "
+        self.output.config(text=newText)
+        return newText
+
+    def equals(self, equation_string):
         """ When pressed this should update the display with all of the calculations waiting in output label
 
+            That means we need to strip the string that this method receives
         """
 
     def clear(self):

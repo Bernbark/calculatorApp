@@ -1,15 +1,13 @@
 """Testing File
 
 This script is an attempt to follow proper testing protocols and learn testing at the same time. Any advice is welcome!
-TKinter is required as some of the UI elements need to be partially recreated to test
-
-This script requires that 'tkinter' be installed within the Python environment you are running this script in.
 
 """
 
 import unittest
 import calc
 import calcUI
+
 
 class TestCalcFunctionalityMethods(unittest.TestCase):
 
@@ -46,6 +44,13 @@ class TestUIFunctionality(unittest.TestCase):
         teststr += calcUI.CalcUI().add_button("7")
 
         self.assertEqual(result, teststr)
+
+    def test_output_for_division(self):
+        result = "0 / 7 / "
+        teststr = calcUI.CalcUI().divide("0")
+        teststr += calcUI.CalcUI().divide("7")
+
+        self.assertEqual(result,teststr)
 
     def test_clear_button(self):
         result = "0"                                    # make sure that when we clear, there is a number inside output
