@@ -70,16 +70,16 @@ class CalcUI(LabelFrame):
         fiv = Button(self, text="5")
         fiv.grid(row=3, column=1)
 
-        six = Button(self, text="6")
+        six = Button(self, text="6", command=lambda: self.display_number(six.cget('text')))
         six.grid(row=3, column=2)
 
         mul = Button(self, text="*")
         mul.grid(row=3, column=3)
 
-        one = Button(self, text="1")
+        one = Button(self, text="1", command=lambda: self.display_number(one.cget('text')))
         one.grid(row=4, column=0)
 
-        two = Button(self, text="2")
+        two = Button(self, text="2", command=lambda: self.display_number(two.cget('text')))
         two.grid(row=4, column=1)
 
         thr = Button(self, text="3")
@@ -94,7 +94,7 @@ class CalcUI(LabelFrame):
         dot = Button(self, text=".")
         dot.grid(row=5, column=1)
 
-        equ = Button(self, text="=")
+        equ = Button(self, text="=", command=lambda: self.equals(self.output.cget('text')))
         equ.grid(row=5, column=2)
 
         pls = Button(self, text="+", command=lambda:self.add_button(self.output.cget('text')))
@@ -118,7 +118,7 @@ class CalcUI(LabelFrame):
     def divide(self,button_text):
         """ Includes functionality for updating display when / is pressed
 
-        :param str: the text displayed on the button this method is attached to
+        :param button_text: the text displayed on the button this method is attached to
         :return: string representation of output's text
         """
         text = button_text
@@ -126,11 +126,34 @@ class CalcUI(LabelFrame):
         self.output.config(text=newText)
         return newText
 
+
     def equals(self, equation_string):
         """ When pressed this should update the display with all of the calculations waiting in output label
 
-            That means we need to strip the string that this method receives
+        That means we need to strip the string that this method receives
+
+        :param equation_string: the string that is shown in the output label of the calc before the user hits = sign
+        :return: string representation of output's text
         """
+        stripped_equation = list(equation_string.replace(" ", ""))
+        prevNum = 1
+        prevNumString = ''
+        nextNum = 1
+        for element in range(0, len(stripped_equation)):
+
+            if stripped_equation[element] == '/':
+                count = element
+                while stripped_equation[count - 1].isnumeric():
+                    prevNumString += stripped_equation[count-1]
+                    count -= 1
+                if stripped_equation[element+1]:
+                    prevNum = int(prevNumString)
+                    nextNum = int(stripped_equation[element+1])
+                    newNumber = float(calc.divide(prevNum,nextNum))
+                    self.output.config(text=str(newNumber))
+                    print(prevNum)
+                    return newNumber
+        return ""
 
     def clear(self):
         """ When pressed this should update the output with a blank string

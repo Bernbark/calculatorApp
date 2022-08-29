@@ -19,6 +19,10 @@ class TestCalcFunctionalityMethods(unittest.TestCase):
         result = calc.subtract(10, 5)
         self.assertEqual(result, 5, "10 - 5 should equal 5.")
 
+    def test_divide(self):
+        result = calc.divide(12, 6)
+        self.assertEqual(result, 2, "12 / 6 should equal 2")
+
 
 class TestUIFunctionality(unittest.TestCase):
 
@@ -58,4 +62,8 @@ class TestUIFunctionality(unittest.TestCase):
 
         self.assertEqual(result, teststr)
 
+    def test_equals_button_division(self):
+        result = "6.0"
+        test_string = calcUI.CalcUI().equals("12 / 2")
 
+        self.assertEqual(result, test_string)
