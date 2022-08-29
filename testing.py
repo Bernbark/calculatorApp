@@ -26,7 +26,7 @@ class TestUIFunctionality(unittest.TestCase):
 
     def test_output_for_zero_start(self):
         result = "07"                           # starting off the string with a 0 should not be allowed, it should be 7
-        testStr = calcUI.display_number("7")    # calling on the class within the file, and setting a number
+        testStr = calcUI.CalcUI().display_number("7")    # calling on the class within the file, and setting a number
         self.assertNotEqual(result, testStr, "0 shouldn't display at the start of a number")
 
     def test_output_for_equality(self):
@@ -35,6 +35,6 @@ class TestUIFunctionality(unittest.TestCase):
         :return: true if it's equal
         """
         result = "7"
-        testStr = calcUI.display_number("7")
-        calcUI.display_number("7")
+        testStr = calcUI.CalcUI().display_number("7")    # calling on the class within the file, and setting a number
+
         self.assertEqual(result, testStr)

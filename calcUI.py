@@ -104,21 +104,21 @@ class CalcUI(LabelFrame):
 
         self.pack()
 
+    def display_number(self,str):
+        """ Changes the output display
 
-def display_number(str):
-    """ Changes the output display
+        :param str: the same one as the text of the button which is pressed
+        :return: the string value (for testing purposes)
+        """
+        text = self.output.cget('text')
+        newstr = ''
+        if text == '' or text == '0':
+            newstr = str
+        else:
+            newstr = text+str
+        self.output.config(text=newstr)
+        return newstr
 
-    :param str: the same one as the text of the button which is pressed
-    :return: the string value (for testing purposes)
-    """
-    text = CalcUI().output.cget('text')
-    newstr = ''
-    if text == '' or text == '0':
-        newstr = str
-    else:
-        newstr = text+str
-    CalcUI().output.config(text=newstr)
-    return newstr
 
 def main():
     root = Tk()
