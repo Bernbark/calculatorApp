@@ -41,4 +41,6 @@ def divide(a, b):
     :param b: number to be subtracted from a
     :return: a / b
     """
+    if b == 0:
+        return "Undefined"
     return a / b

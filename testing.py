@@ -23,6 +23,10 @@ class TestCalcFunctionalityMethods(unittest.TestCase):
         result = calc.divide(12, 6)
         self.assertEqual(result, 2, "12 / 6 should equal 2")
 
+    def test_zero_division(self):
+        result = calc.divide(12, 0)
+        self.assertEqual(result, "Undefined", "Anything divided by 0 should report back as undefined")
+
 
 class TestUIFunctionality(unittest.TestCase):
 
@@ -67,3 +71,7 @@ class TestUIFunctionality(unittest.TestCase):
         test_string = calcUI.CalcUI().equals("12 / 2")
 
         self.assertEqual(result, test_string)
+
+    def test_divide_by_zero(self):
+        result = "Undefined"
+        test_string = calcUI.CalcUI().equals("12 / 0")

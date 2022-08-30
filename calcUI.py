@@ -88,7 +88,7 @@ class CalcUI(LabelFrame):
         mns = Button(self, text="-")
         mns.grid(row=4, column=3)
 
-        zer = Button(self, text="0")
+        zer = Button(self, text="0", command=lambda: self.display_number(zer.cget('text')))
         zer.grid(row=5, column=0)
 
         dot = Button(self, text=".")
@@ -104,12 +104,24 @@ class CalcUI(LabelFrame):
 
         self.pack()
 
+    def check_for_undefined(self):
+        """ Helper method to check if the output label contains the word 'Undefined'
+
+        :return: true if output contains word Undefined, otherwise false
+        """
+        print(self.output.cget('text'))
+        if "Undefined" in self.output.cget("text"):
+            return True
+        else:
+            return False
+
     def add_button(self,button_text):
         """ Includes functionality for updating display when + is pressed
 
         :param str: the text displayed on the button this method is attached to
         :return: string representation of output's text
         """
+
         text = button_text
         newtext = text + " + "
         self.output.config(text=newtext)
@@ -126,7 +138,6 @@ class CalcUI(LabelFrame):
         self.output.config(text=newText)
         return newText
 
-
     def equals(self, equation_string):
         """ When pressed this should update the display with all of the calculations waiting in output label
 
@@ -142,17 +153,25 @@ class CalcUI(LabelFrame):
         for element in range(0, len(stripped_equation)):
 
             if stripped_equation[element] == '/':
+                nextNum = int(stripped_equation[element + 1])                       # check for zero division
+                if nextNum == 0:
+                    self.output.config(text="Undefined")                            # show error to user and exit loop
+                    return
                 count = element
-                while stripped_equation[count - 1].isnumeric():
+
+                while stripped_equation[count - 1].isnumeric() and count-1 >= 0:
                     prevNumString += stripped_equation[count-1]
                     count -= 1
+
                 if stripped_equation[element+1]:
+                    prevNumString = prevNumString[::-1]
                     prevNum = int(prevNumString)
-                    nextNum = int(stripped_equation[element+1])
+
+                    print(nextNum)
                     newNumber = float(calc.divide(prevNum,nextNum))
                     self.output.config(text=str(newNumber))
-                    print(prevNum)
-                    return newNumber
+
+                    return str(newNumber)
         return ""
 
     def clear(self):
@@ -170,7 +189,7 @@ class CalcUI(LabelFrame):
         """
         text = self.output.cget('text')
         newstr = ''
-        if text == '' or text == '0':
+        if text == '' or text == '0' or self.check_for_undefined():
             newstr = str
         else:
             newstr = text+str
