@@ -75,3 +75,27 @@ class TestUIFunctionality(unittest.TestCase):
     def test_divide_by_zero(self):
         result = "Undefined"
         test_string = calcUI.CalcUI().equals("12 / 0")
+        self.assertEqual(result, test_string)
+
+    def test_delete_button_whitespace(self):
+        result = "12 /"
+        test_string = calcUI.CalcUI().delete("12 / 0")
+        self.assertEqual(result, test_string)
+
+    def test_delete_button_decimal(self):
+        """ If the decimal is the last char after deleting, it should be deleted automatically"""
+        result = "123"
+        test_string=calcUI.CalcUI().delete("123.4")
+        self.assertEqual(result, test_string)
+
+    def test_decimal_placement(self):
+        result = "123."
+        test_string = calcUI.CalcUI().display_special_character(".", "123")
+        self.assertEqual(result, test_string)
+
+    def test_decimal_duplication_prevention(self):
+        result = "123."
+        test_string=calcUI.CalcUI().display_special_character(".","123.")
+        self.assertEqual(result, test_string)
+
+    # NEXT UP: Adding decimals breaks the division system, need to check string for decimals and work around them
